@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage("Build docker image"){
             steps{
-                sh "sudo docker build . -t gurpartapsingh88/nodejsk8s:v1 "
+                sh "sudo docker build . -t gurpartapsingh88/nodejsk8s:${DOCKER_TAG} "
             }
             
         }
