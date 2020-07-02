@@ -2,12 +2,16 @@ pipeline{
     agent any
     environment{
         DOCKERTAG = getDockerTag()
-    }
+	registry = "gurpartapsingh88/k8simage"
+	registryCredential = 'dockerhub'
+    } 
     stages{
         stage("Build docker image"){
             steps{
-                sh "sudo docker build . -t gurpartapsingh88/nodejsk8s:${DOCKER_TAG} "
-            }
+	     	script{
+		    docker.build registry + ":BUILD_NUMBER"
+		}
+            } 
             
         }
     }
